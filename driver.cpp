@@ -86,8 +86,7 @@ int main(int argc, char** argv)
 
         // Load levels from env/cmdline, if provided
         spdlog::cfg::load_env_levels();
-        auto levels = spdlog::cfg::helpers::extract_levels(vm["log_level"].as<string>());
-        spdlog::details::registry::instance().update_levels(std::move(levels));
+        spdlog::cfg::helpers::load_levels(vm["log_level"].as<string>());
     }
     catch (const spdlog::spdlog_ex& ex) {
         std::cerr << "Log initialization failed:" << ex.what() << std::endl;
