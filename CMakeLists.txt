@@ -2,17 +2,20 @@ cmake_minimum_required(VERSION 3.13)
 project(disjoint_CBSH)
 
 set(CMAKE_CXX_STANDARD 17)
-
+set(spdlog_HOME /home/ggutow/eclipse-workspace/spdlog)
+set(spdlog_DIR ${spdlog_HOME}/build)
+find_package(spdlog REQUIRED)
 
 include_directories(.
         $ENV{GUROBI_HOME}/include
+        ${spdlog_HOME}/include
         )
 
 link_libraries(boost_program_options
         pthread  # Used by one of the other dependencies
         stdc++fs
         $ENV{GUROBI_HOME}/lib/libgurobi_c++.a
-        $ENV{GUROBI_HOME}/lib/libgurobi81.so
+        $ENV{GUROBI_HOME}/lib/libgurobi110.so
         libspdlog.a
         )
 
