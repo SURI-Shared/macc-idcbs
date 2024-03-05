@@ -3804,9 +3804,8 @@ std::tuple<bool, int> ICBSSearch::do_idcbsh_iteration(ICBSNode *curr,
 
 		bool bypass = false;
 		if ((curr->g_val == orig_g_val) && (curr->num_of_conflicts < orig_num_conflicts)) {
-            if (screen) {
-                std::cout << "Left child found a bypass - adopting its new paths without splitting." << std::endl;
-            }
+            spdlog::info("Left child found a bypass - adopting its new paths without splitting.");
+            
             idcbsh_unconstrain(curr, cat, path_backup, orig_conflict, orig_makespan, orig_g_val, orig_h_val, orig_left_cost_will_increase, orig_right_cost_will_increase, true);
             bypass = true;
             curr->time_generated = orig_time_generated;  // Simulate adopting the child's path and continuing with the parent
