@@ -56,7 +56,14 @@ namespace std  // Forces the templating stage to consider our typedef above (see
 {
 std::ostream& operator<<(std::ostream& os, const Conflict& conflict);
 }
-
+template<>
+struct fmt::formatter<Conflict> : fmt::formatter<std::string>
+{
+    auto format(Conflict conflict, format_context &ctx) const ->decltype(ctx.out())
+    {
+        return format_to(ctx.out(),"{}",conflict);
+    }
+};
 struct ConstraintState
 {
     bool vertex = false;
