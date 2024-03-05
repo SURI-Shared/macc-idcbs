@@ -10,3 +10,4 @@
 /scen/*.scen
 /.ipynb_checkpoints/*
 /bin/*
+build/*
