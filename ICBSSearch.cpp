@@ -3220,9 +3220,9 @@ bool ICBSSearch::runICBSSearch()
                     msg << "****** Same node #" << curr->time_generated <<
                               " with f=" << curr->g_val << "+" << curr->h_val << " (";
                     for (int i = 0; i < num_of_agents; i++)
-                        std::cout << paths[i]->size() - 1 << ", ";
-                    std::cout << ") and #conflicts=" << curr->num_of_conflicts << std::endl;
-                    printConflicts(*curr);
+                        msg << paths[i]->size() - 1 << ", ";
+                    msg << ") and #conflicts=" << curr->num_of_conflicts << std::endl;
+                    printConflicts(msg, *curr);
                 }
             }
 		}
