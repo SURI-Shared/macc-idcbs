@@ -34,3 +34,17 @@ std::ostream& operator<<(std::ostream& os, const Conflict& conflict)
     return os;
 }
 }
+
+auto fmt::formatter<Constraint>::format(Constraint constraint, format_context &ctx) const ->decltype(ctx.out())
+{
+    std::ostringstream msg;
+    msg<<constraint;
+    return fmt::formatter<std::string>::format(msg.str(),ctx);
+}
+
+auto fmt::formatter<Conflict>::format(Conflict conflict, format_context &ctx) const ->decltype(ctx.out())
+    {
+        std::ostringstream msg;
+        msg<<conflict;
+        return fmt::formatter<std::string>::format(msg.str(),ctx);
+    }

@@ -10,6 +10,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <sstream>
 #include <list>
 #include <functional>  // for std::hash (c++11 and above)
 #include <ctime>
@@ -59,10 +60,12 @@ std::ostream& operator<<(std::ostream& os, const Conflict& conflict);
 template<>
 struct fmt::formatter<Conflict> : fmt::formatter<std::string>
 {
-    auto format(Conflict conflict, format_context &ctx) const ->decltype(ctx.out())
-    {
-        return format_to(ctx.out(),"{}",conflict);
-    }
+    auto format(Conflict conflict, format_context &ctx) const ->decltype(ctx.out());
+};
+template<>
+struct fmt::formatter<Constraint> : fmt::formatter<std::string>
+{
+    auto format(Constraint constraint, format_context &ctx) const ->decltype(ctx.out());
 };
 struct ConstraintState
 {
