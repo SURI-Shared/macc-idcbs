@@ -4,7 +4,6 @@ project(disjoint_CBSH)
 set(CMAKE_CXX_STANDARD 17)
 set(spdlog_HOME /home/ggutow/eclipse-workspace/spdlog)
 set(spdlog_DIR ${spdlog_HOME}/build)
-find_package(spdlog REQUIRED)
 
 include_directories(.
         $ENV{GUROBI_HOME}/include
@@ -16,7 +15,7 @@ link_libraries(boost_program_options
         stdc++fs
         $ENV{GUROBI_HOME}/lib/libgurobi_c++.a
         $ENV{GUROBI_HOME}/lib/libgurobi110.so
-        libspdlog.a
+        ${spdlog_DIR}/libspdlog.a
         )
 
 add_executable(disjoint_CBSH
